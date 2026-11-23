@@ -1,0 +1,10 @@
+# /etc/systemd/system/receita-cnb-backup.timer
+[Unit]
+Description=Agenda o backup diario as 22h
+
+[Timer]
+OnCalendar=*-*-* 22:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

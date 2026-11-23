@@ -1,0 +1,12 @@
+# /etc/systemd/system/receita-cnb-backup.service
+[Unit]
+Description=Backup diario - Receita Colegio Notarial do Brasil
+
+[Service]
+Type=oneshot
+User=receitacnb
+WorkingDirectory=/opt/receita-cnb/app
+Environment=CLOUD_FINANCE_DB=/var/lib/receita-cnb/cloud_finance.db
+Environment=CLOUD_FINANCE_BACKUP_DIR=/var/backups/receita-cnb
+Environment=CLOUD_FINANCE_BACKUP_DIAS=30
+ExecStart=/opt/receita-cnb/app/.venv/bin/python scripts/backup_automatico.py

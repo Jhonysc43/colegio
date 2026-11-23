@@ -1,0 +1,16 @@
+# Na pasta do sistema:  docker compose -f deploy/docker/docker-compose.yml up -d
+services:
+  receita-cnb:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8501:8501"     # só o proxy HTTPS da máquina acessa
+    environment:
+      CLOUD_FINANCE_SESSAO_MIN: "30"
+    volumes:
+      - receita-dados:/dados       # banco e backups persistem fora do contêiner
+
+volumes:
+  receita-dados:

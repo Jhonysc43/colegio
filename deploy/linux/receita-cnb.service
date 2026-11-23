@@ -1,0 +1,24 @@
+# /etc/systemd/system/receita-cnb.service
+[Unit]
+Description=Receita Colegio Notarial do Brasil (Streamlit)
+After=network.target
+
+[Service]
+Type=simple
+User=receitacnb
+WorkingDirectory=/opt/receita-cnb/app
+Environment=CLOUD_FINANCE_DB=/var/lib/receita-cnb/cloud_finance.db
+Environment=CLOUD_FINANCE_SESSAO_MIN=30
+Environment=STREAMLIT_SERVER_ADDRESS=127.0.0.1
+Environment=STREAMLIT_SERVER_HEADLESS=true
+Environment=STREAMLIT_SERVER_PORT=8501
+ExecStart=/opt/receita-cnb/app/.venv/bin/python -m streamlit run app.py
+Restart=on-failure
+RestartSec=5
+# Endurecimento
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/var/lib/receita-cnb /var/backups/receita-cnb
+
+[Install]
+WantedBy=multi-user.target

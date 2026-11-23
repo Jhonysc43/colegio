@@ -1,0 +1,6 @@
+.venv
+__pycache__
+dados
+tests
+deploy/docker/*.yml
+*.db

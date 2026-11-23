@@ -1,0 +1,25 @@
+# ---- Dados: NUNCA publicar ----
+# Só a planilha fictícia de demonstração entra no repositório.
+dados/*
+!dados/amostra_ficticia.xlsx
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.trava
+backups/
+logs/
+pacotes/
+
+# ---- Ambiente e segredos ----
+.env
+.venv/
+venv/
+.streamlit/credentials.toml
+.streamlit/secrets.toml
+
+# ---- Python e sistema ----
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
